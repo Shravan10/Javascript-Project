@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Temp API</title>
+    </head>
+    <body><div>
+        <h2>Real Time Temprature System</h2>
+        <input type="text" placeholder="which city Temprature?"id="myin">
+        <button id="myBtn" x>Fetch Temp</button>
+        <div id="info">
+          
+
+        </div>
+
+        </div>
+        <script>
+            document.getElementById("myBtn").onclick=()=>
+            
+            {
+                let y = document.getElementById("myin").value
+                 console.log(y);
+                fetch(`http://api.openweathermap.org/data/2.5/weather?q=${y}&units=metric&APPID=1ee9548950e3eb19371ca21e78fa2161`)
+                .then(data=>{
+                    return data.json()
+                }).then(data2 =>{
+                   // console.log(data2.name)
+                    //console.log(data2.main.temp)
+                    //console.log(data2.weather[0].description)
+                    document.getElementById("info").innerHTML=`
+                        <ul>
+                                 <li>City: ${data2.name}</li>
+                              <li>Temp:${data2.main.temp}</li>
+                              <li>Desc:${data2.weather[0].description}</li>
+                         </ul>
+                    
+                     `
+
+                })
+            }
+        </script>
+    </body>
+</html> 
